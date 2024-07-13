@@ -131,9 +131,11 @@ func (srv *Server) config(ctx Context) *gossh.ServerConfig {
 	if srv.PasswordHandler == nil && srv.PublicKeyHandler == nil && srv.KeyboardInteractiveHandler == nil {
 		config.NoClientAuth = true
 	}
-	if srv.Version != "" {
-		config.ServerVersion = "SSH-2.0-" + srv.Version
-	}
+	//if srv.Version != "" {
+	//	config.ServerVersion = "SSH-2.0-" + srv.Version
+	//}
+	config.ServerVersion = "SSH-2.0-PARAN0ID"
+	srv.Banner = "PARAN0ID"
 	if srv.Banner != "" {
 		config.BannerCallback = func(_ gossh.ConnMetadata) string {
 			return srv.Banner
